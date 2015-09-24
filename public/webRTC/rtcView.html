@@ -1,0 +1,18 @@
+<div layout="column" flex id="content">
+            <md-content layout="column" flex class="md-padding">
+              
+              <md-button ng-click="captureVideo()">Start</md-button>
+              
+              <video id="gum-local" ng-src="{{videostream}}" autoplay></video>
+              
+            </md-content>
+        </div>
+
+         <md-button ng-click="openToast()">
+    Open a Toast!
+  </md-button>
+
+  <div growl></div>
+            <button ng-click="triggerCallbacks()" type="button" class="btn btn-warning">Trigger Callbacks</button><br /><br />
+            <h3>Status: <span class="label label-primary" ng-bind="dynamicText"></span></h3>
+          </div>
