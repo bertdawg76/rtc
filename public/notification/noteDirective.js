@@ -1,4 +1,4 @@
-angular.module('rtc').directive('showButton', function (webNotification) {
+angular.module('jwt-auth').directive('showButton', function (webNotification) {
     'use strict';
 
     return {

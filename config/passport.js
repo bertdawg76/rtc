@@ -1,9 +1,8 @@
 var passport = require('passport');
-var LocalStrategy = require('passport-local');
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var LocalStrategy = require('passport-local').Strategy;
+var User = require('../users/userModel.js');
 
-passport.use(new LocalStrategy {
+passport.use(new LocalStrategy (
 	function(username, password, done) {
 		User.findOne({ username: username }, function (err, user) {
 			if (err) { return done(err); }
@@ -16,4 +15,4 @@ passport.use(new LocalStrategy {
 			return done(null, user);
 		});
 	}
-});
+));

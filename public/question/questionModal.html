@@ -1,0 +1,32 @@
+<md-dialog aria-label="Question dialog">
+    <md-dialog-content>
+    <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>
+                    <span>Submit Question</span>
+                </h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+
+    <md-input-container>
+        <label>Enter Your Name</label>
+        <input ng-model="question.name">
+    </md-input-container>
+    
+   
+
+    <md-input-container>
+        <label>Enter your travel log description here...</label>
+        <textarea name="log" ng-model="question.description" required md-maxlength="300"></textarea>
+    </md-input-container>
+    </md-dialog-content>
+    <div class="md-actions">
+        <md-button ng-click="closeDialog()" class="">
+            Cancel
+        </md-button>
+        <md-button ng-click="saveLog()" class="md-raised md-primary">
+            Save
+        </md-button>
+    </div>
+</md-dialog>

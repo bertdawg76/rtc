@@ -1,0 +1,40 @@
+<md-input-container>
+  <label>Find questions</label>
+  <input ng-model="search">
+</md-input-container>
+<md-container>
+  <md-button ng-click="getQuestion()" class="md-raised md-primary">Get questions</md-button>
+  <span flex></span>
+
+  <md-input-container>
+        <label>Enter Your Name</label>
+        <input ng-model="question.title">
+    </md-input-container>
+    
+
+    <md-input-container>
+        <label>Enter your Question</label>
+        <textarea name="log" ng-model="question.description" required md-maxlength="300"></textarea>
+    </md-input-container>
+    <md-button ng-click="addQuestion(question)" class="md-raised md-primary">Add question</md-button>
+
+  
+
+<md-content>
+  <md-list>
+    <md-subheader class="md-no-sticky">Search Results: {{questions.length || 0}}</md-subheader>
+    <md-divider ng-repeat-start="r in questions"></md-divider>
+    <md-list-item class="md-3-line" ng-repeat-end>
+      <div class="md-list-item-text">
+       
+        <h4>{{ r.name }}</h4>
+        <p>{{ r.description }}</p>
+      </div>
+    </md-list-item>
+    
+  </md-list>
+</md-content>  
+
+
+<!--<md-button class="md-raised md-warn" ng-click="showAddQuestionModal()">New Question</md-button>
+</md-container>-->

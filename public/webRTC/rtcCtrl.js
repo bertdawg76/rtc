@@ -1,5 +1,5 @@
 
-angular.module('rtc').controller('rtcCtrl', function($scope, $sce, $mdToast, growl, rtcService) {
+angular.module('jwt-auth').controller('rtcCtrl', function($scope, $sce, $mdToast, growl, rtcService) {
 
     $scope.captureVideo = captureVideo; 
    

@@ -3,14 +3,19 @@ var Question = require('./questionModel.js');
 module.exports = function (server, express) {
     var router = express.Router();
 
-   
+    // var QuestionSchema = new odm.Schema({
+    //     title: { type: String, required: true },
+    //     description: { type: String, unique: true },
+    //     postedBy: { type: odm.Schema.Types.ObjectId, ref: 'User', required: false },
+    //     createdOn: { type: Date, default: Date.now }
+    // });
 
     router.route('/')
         .post(function (req, res) {
             console.log('LOG: Posting a question');
 
             // two ways of doing this the first:
-            var newQuestion = new Question(req.body.question);
+            var newQuestion = new Question(req.body);
 
             newQuestion.save(function (err, question) {
                 if (!!err) {
@@ -23,11 +28,11 @@ module.exports = function (server, express) {
                         var message = err.errors[key].message;
                         console.log('ERROR: Validation error for "%s": %s', key, message);
                     });
-
+                        console.log(err);
                     return res.status(400).json({ success: false, message: 'Could not save the question.' });
                 } else {
                     res.status(201).json({
-                        sucess: true,
+                        success: true,
                         data: question
                     });
                 }
@@ -105,3 +110,47 @@ module.exports = function (server, express) {
 
     return router;
 };
+
+/*var express = require('express');
+var router = express.Router();
+
+router.get('/', function(req, res) {
+    res.render('questionCtrl', { title: 'Express' });
+});
+
+var mongoose = require('mongoose');
+var Question = mongoose.model('Question');
+
+   
+
+router.get('/questions', function(req, res, next) {
+    Question.find(function(err, result) {
+        if (err) { next(err); }
+
+        res.json(result);
+    });
+});
+
+router.post('/questions', function(req,res, next) {
+    var newQuestion = new Question(req.body);
+
+    newQuestion.save(function(err, result) {
+        if (err) { return next(err); }
+
+        res.json(result);
+    });
+});
+
+router.param('question', function(req, res, next, id) {
+  var query = Question.findById(id);
+
+  query.exec(function (err, result){
+    if (err) { return next(err); }
+    if (!result) { return next(new Error('can\'t find question')); }
+
+    req.result = result;
+    return next();
+  });
+});
+
+module.exports = router;*/

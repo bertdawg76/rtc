@@ -1,30 +1,36 @@
-angular.module('rtc', ['ui.router', 'ngAnimate', 'ngAria', 'ngMaterial', 'angular-web-notification', 'angular-growl']);
+angular.module('jwt-auth', ['ui.router', 'ngAnimate', 'ngAria', 'ngMaterial', 'angular-web-notification']);
 
-angular.module('rtc').config(function($urlRouterProvider, $stateProvider){
+angular.module('jwt-auth').config(function($urlRouterProvider, $stateProvider){
 
   $urlRouterProvider.otherwise('/');
   $stateProvider
-    .state('rtcView', {
-      url: '/',
-      templateUrl: 'webRTC/rtcView.html',
-      controller: 'rtcCtrl'
-    })
-    .state('note', {
-      url: '/note',
-
-      templateUrl: 'notification/note.html',
-      controller: 'noteCtrl'
-    })
+    
     .state('question', {
-      url: '/question',
-      templateUrl: 'questions/question.html',
+      url: '/',
+      templateUrl: 'question/question.html',
       controller: 'questionCtrl'
     })
-    .state('user', {
-      url: '/user',
-      templateUrl: 'users/user.html',
-      controller: 'userCtrl'
+    .state('login', {
+      url: '/login',
+      templateUrl: 'users/login.html',
+      controller: 'userCtrl',
+      onEnter: function($state, auth) {
+        if(auth.isLoggedIn()){
+          $state.go('question');
+        }
+      }
     })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'users/register.html',
+      controller: 'userCtrl',
+      onEnter: function($state, auth) {
+        if(auth.isLoggedIn()){
+          $state.go('question');
+        }
+      }
+    })
+    
 });
 
 

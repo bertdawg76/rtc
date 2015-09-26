@@ -1,4 +1,4 @@
-angular.module('rtc').service('rtcService', function($q) {
+angular.module('jwt-auth').service('rtcService', function($q) {
   
   navigator.getUserMedia = navigator.getUserMedia ||
       navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;

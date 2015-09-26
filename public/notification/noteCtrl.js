@@ -1,4 +1,4 @@
-angular.module('rtc').controller('noteCtrl', function($scope) {
+angular.module('jwt-auth').controller('noteCtrl', function($scope) {
     
   
 });

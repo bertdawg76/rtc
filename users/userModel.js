@@ -1,15 +1,15 @@
-var mongoose = require('mongoose');
+var odm = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
-var UserSchema = new mongoose.Schema({
+var UserSchema = new odm.Schema({
 
 	username: {type: String, lowercase: true, unique: true},
 	hash: String,
 	salt: String
 });
 
-UserSchema.method.setPassword = function(password) {
+UserSchema.methods.setPassword = function(password) {
 	this.salt = crypto.randomBytes(16).toString('hex');
 
 	this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
@@ -32,4 +32,4 @@ UserSchema.methods.generateJWT = function() {
 		exp: parseInt(exp.getTime() / 1000)
 	}, 'I heart donuts');
 }
-mongoose.model('User', UserSchema);
+module.exports = odm.model('User', UserSchema, 'users');
