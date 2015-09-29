@@ -1,21 +1,20 @@
-<form ng-submit="register()"
-    style="margin-top:30px;">
+
     <h3>Register</h3>
 
-    <div class="form-group">
-      <input type="text"
-      class="form-control"
-      placeholder="Username"
-      ng-model="user.username"></input>
-    </div>
-    <div class="form-group">
-      <input type="password"
-      class="form-control"
-      placeholder="Password"
-      ng-model="user.password"></input>
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
-  </form>
+  
+    
+    <md-input-container>
+      <label>Enter Username</label>
+      <input ng-model="user.username"></md-input-container>
+     
+
+    
+      <md-input-container>
+      <label>Enter Password</label>
+      <input type="password" ng-model="user.password"></md-input-container>
+     <md-button ng-click="register()" class="md-raised md-primary">Register</md-button>
+
+
 
 
 <!--<md-input-container>
@@ -27,4 +26,15 @@
         <label>Enter Your Password</label>
         <input  type="password" ng-model="user.password">
     </md-input-container>
-    <md-button ng-click="register(user)" class="md-raised md-primary">register</md-button>-->
+    <md-button ng-click="register(user)" class="md-raised md-primary">register</md-button>
+
+    <form ng-submit="register()"
+    style="margin-top:30px;">
+    <h3>Register</h3>
+     <div>
+      <input type="text"
+      class="form-control"
+      placeholder="Username"
+      ng-model="user.username"></input>
+    </div>
+-->

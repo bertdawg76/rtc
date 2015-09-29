@@ -34,3 +34,4 @@ angular.module('jwt-auth').config(function($urlRouterProvider, $stateProvider){
 });
 
 
+

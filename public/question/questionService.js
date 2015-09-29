@@ -1,4 +1,4 @@
-angular.module('jwt-auth').service('questionService', function($http, $q){
+angular.module('jwt-auth').service('questionService', function($http, $q, auth){
 
 	var questions =[];
 

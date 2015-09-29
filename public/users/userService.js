@@ -1,19 +1,29 @@
 angular.module('jwt-auth').factory('auth', function ($http, $window) {
 
-    var auth = {};
+    var auth = {
+        saveToken: saveToken,
+        getToken: getToken,
+        isLoggedIn: isLoggedIn,
+        currentUser: currentUser,
+        register: register,
+        logIn: logIn,
+        logOut: logOut
+    };
 
-    auth.saveToken = function(token) {
+    return auth;
+
+    function saveToken(token) {
         if(token){
           $window.localStorage['rtc-token'] = token;   
         }
       
     }
 
-    auth.getToken = function() {
+    function getToken() {
         return $window.localStorage['rtc-token'];
     }
 
-    auth.isLoggedIn = function() {
+    function isLoggedIn() {
         var token = auth.getToken();
 
         if (token) {
@@ -23,36 +33,35 @@ angular.module('jwt-auth').factory('auth', function ($http, $window) {
         } else {
             return false;
         }
-    };
+    }
 
-    auth.currentuser = function() {
+    function currentUser() {
         if(auth.isLoggedIn()){
             var token = auth.getToken();
             var payload = JSON.parse($window.atob(token.split('.')[1]));
 
             return payload.username;
-        }
-    };
+        } 
+        //do else 
+    }
 
-    auth.register = function(user){
-        return $http.post('/register', user).success(function(data){
+    function register(user){
+        return $http.post('/api/users/register', user).success(function(data){
             auth.saveToken(data.token);
         }).error(function(err) {
             console.log(err);
         });
-    };
+    }
 
-    auth.logIn = function(user){
-        return $http.post('/api/users', user).success(function(data){
+    function logIn(user){
+        return $http.post('/api/users/login', user).success(function(data){
             
             auth.saveToken(data.token);
         });
-    };
+    }
 
-    auth.logOut = function(){
+    function logOut(){
         $window.localStorage.removeItem('rtc-token');
-    };
+    }
 
-    return auth;
-    
 });

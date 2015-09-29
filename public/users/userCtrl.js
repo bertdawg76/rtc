@@ -6,7 +6,7 @@ angular.module('jwt-auth').controller('userCtrl', function($scope, $state, auth)
 			console.log($scope.user);
 			$scope.error = error;
 		}).then(function(){
-			$state.go('home');
+			$state.go('question');
 		});
 	};
 
@@ -15,7 +15,7 @@ angular.module('jwt-auth').controller('userCtrl', function($scope, $state, auth)
 			console.log($scope.user);
 			$scope.error = error;
 		}).then(function(){
-			$state.go('home');
+			$state.go('question');
 		});
     };
 });

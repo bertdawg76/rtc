@@ -8,20 +8,14 @@
 		
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
 		<link rel="stylesheet" href="styles/styles.css">
+		<script src="/socket.io/socket.io.js"></script>
 	<head>
 	<body>
 		<header ng-include="'nav/nav.html'"></header>
 		<div class="md-whiteframe-z2" style="margin: 30px; padding: 30px;" ui-view></div>
 
 
-		<button class="show-button"></button>
-
-
-		
-
-    
-
-  
+		<button class="show-button"></button> 
 
 				<script src="bower_components/HTML5-Desktop-Notifications/desktop-notify-min.js"></script>
 		
@@ -40,12 +34,14 @@
 		<script src="notification/noteCtrl.js"></script>
 		<script src="notification/noteService.js"></script>
 		<script src="notification/noteDirective.js"></script>
+		<script src="notification/socketService.js"></script>
 		<script src="users/userCtrl.js"></script>
 		<script src="users/userService.js"></script>
 		<script src="question/questionService.js"></script>
 		<script src="question/questionCtrl.js"></script>
 		<script src="nav/navCtrl.js"></script>
 		<script src="home/mainCtrl.js"></script>
+
 		
 	</body>
 </html>

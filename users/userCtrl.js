@@ -4,15 +4,14 @@ var jwt = require('express-jwt');
 var auth = jwt({secret: 'I heart donuts', userProperty: 'payload'});
 var mongoose = require('mongoose');
 
-module.exports = function (server, express, router) {
-    //var router = express.Router();
+module.exports = function (server, express) {
+    var router = express.Router();
     
    
 
-    // router.route('/register')
-
+    router.route('/register')
     // Create a new User
-        router.post('/register', function(req, res, next) {
+        .post(function(req, res, next) {
             console.log("You made it!!!!!\n\n\n\n\n\n\n")
             if(!req.body.username || !req.body.password) {
                 return res.status(400).json({message: 'Please fill out all the form'});
@@ -31,9 +30,9 @@ module.exports = function (server, express, router) {
             });
         });
 
-    // router.route('/login')
+    router.route('/login')
 
-        router.post('/login', function(req, res, next){
+        .post(function(req, res, next){
             if(!req.body.username || !req.body.password){
                 return res.status(400).json({message: 'Please fill out all the form'});
             }
